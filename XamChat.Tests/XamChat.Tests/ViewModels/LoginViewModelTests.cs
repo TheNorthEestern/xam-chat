@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Threading.Tasks;
 using XamChat.Core;
 using XamChat.Tests;
-using System.Threading.Tasks;
+using NUnit.Framework;
 
 [TestFixture]
 public class LoginViewModelTests {
@@ -19,5 +20,10 @@ public class LoginViewModelTests {
 		loginViewModel.Password = "password";
 		await loginViewModel.Login ();
 		Assert.That (settings.User, Is.Not.Null);
+	}
+	[Test, ExpectedException(typeof(Exception), ExpectedMessage="Username is blank.")]
+	public async Task LoginWithNoUsernameOrPassword() {
+		// Throws an exception
+		await loginViewModel.Login();
 	}
 }
