@@ -5,7 +5,7 @@ public class FakeWebService : IWebService {
 	public int SleepDuration {get; set;}
 
 	public FakeWebService() {
-		SleepDuration = 1;
+		SleepDuration = 2000;
 	}
 
 	private Task Sleep() {
